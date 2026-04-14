@@ -18,7 +18,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #667eea, #764ba2, #4facfe);
+    background: linear-gradient(135deg, #5d77eb, #5c85ef, #6e56f6);
     background-size: 300% 300%;
     animation: bgMove 10s ease infinite;
     overflow: hidden;
@@ -83,15 +83,15 @@ body::after {
 @keyframes pulseGlow {
     0%,100% {
         box-shadow:
-            0 0 20px #ff4d6d,
-            0 0 40px #ff7eb3,
-            0 0 80px rgba(255,0,100,0.6);
+            0 0 20px #6f75ac,
+            0 0 40px #746e87,
+            0 0 80px rgba(104, 103, 120, 0.6);
     }
     50% {
         box-shadow:
-            0 0 30px #ff4d6d,
-            0 0 60px #ff7eb3,
-            0 0 120px rgba(255,0,100,0.9);
+            0 0 30px #9aa9df,
+            0 0 60px #7585ad,
+            0 0 120px rgba(72, 95, 148, 0.9);
     }
 }
 
@@ -104,12 +104,12 @@ body::after {
     border: 1px solid rgba(255,255,255,0.2);
 
     box-shadow:
-        0 0 20px #ff4d6d,
-        0 0 40px #ff7eb3,
-        0 0 80px rgba(255,0,100,0.6);
+        0 0 20px #314774,
+        0 0 40px #f989b7,
+        0 0 80px rgba(42, 75, 97, 0.6);
 
     text-align: center;
-    color: white;
+    color: rgb(155, 236, 126);
     transform: perspective(1000px) rotateX(4deg);
     animation: floatBox 5s ease-in-out infinite, pulseGlow 3s infinite;
     transition: 0.4s;
@@ -128,7 +128,7 @@ body::after {
     position: absolute;
     width: 200%;
     height: 60%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.162), transparent);
     transform: rotate(25deg);
     top: -120%;
     left: -50%;
@@ -276,7 +276,7 @@ body::after {
         <input type="password" placeholder="Enter your password">
     </div>
 
-    <button class="login-btn">
+    <button class="login-btn" onclick="loginUser()">
         Login / உள்நுழை >>>
     </button>
 
@@ -288,6 +288,19 @@ body::after {
     </div>
 
 </div>
+<script>
+function loginUser() {
+    let username = document.querySelector('input[type="text"]').value;
+    let password = document.querySelector('input[type="password"]').value;
+
+    if(username === "admin" && password === "1234") {
+        alert("Login Success!");
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Invalid Username or Password");
+    }
+}
+</script>
 
 </body>
 </html>
