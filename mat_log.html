@@ -243,6 +243,42 @@ body::after {
     color: #eee;
     text-decoration: none;
 }
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    background: linear-gradient(135deg, #ff4d6d, #4facfe);
+    padding: 25px;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 20px #ff4d6d;
+    animation: pop 0.3s ease;
+}
+
+.popup-box button {
+    margin-top: 15px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+
+@keyframes pop {
+    from { transform: scale(0.5); }
+    to { transform: scale(1); }
+}
 </style>
 
 </head>
@@ -288,17 +324,34 @@ body::after {
     </div>
 
 </div>
+<div id="popup" class="popup">
+    <div class="popup-box">
+        <p id="popup-text">Login Success!</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
 <script>
 function loginUser() {
     let username = document.querySelector('input[type="text"]').value;
     let password = document.querySelector('input[type="password"]').value;
 
     if(username === "admin" && password === "1234") {
-        alert("Login Success!");
+        showPopup("Login Success!");
         window.location.href = "dashboard.html";
     } else {
-        alert("Invalid Username or Password");
+        showPopup("Invalid Username or Password");
     }
+}
+</script>
+<script>
+function showPopup(message) {
+    document.getElementById("popup-text").innerText = message;
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    window.location.href = "dashboard.html";
 }
 </script>
 
