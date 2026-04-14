@@ -2,137 +2,119 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>WELCOME</title>
+<title>MAT_TAB</title>
 
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', 'Noto Sans Tamil', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-/*  BACKGROUND */
+/* 🌈 BACKGROUND */
 body {
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #5d77eb, #5c85ef, #6e56f6);
-    background-size: 300% 300%;
-    animation: bgMove 10s ease infinite;
+    background: linear-gradient(135deg, #141e30, #243b55);
     overflow: hidden;
-    position: relative;
+    color: white;
 }
 
-@keyframes bgMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/*  CENTER LIGHT */
-body::after {
-    content: "";
+/* 🔢 DJ MATH SYMBOLS */
+.math-bg span {
     position: absolute;
-    width: 420px;
-    height: 420px;
-    background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%);
+    font-size: 22px;
+    font-weight: bold;
+    animation: floatMath 10s linear infinite;
+}
+
+.math-bg span:nth-child(1){ color:#ff4d6d; }
+.math-bg span:nth-child(2){ color:#00f2fe; }
+.math-bg span:nth-child(3){ color:#00ff88; }
+.math-bg span:nth-child(4){ color:#ffcc00; }
+.math-bg span:nth-child(5){ color:#cc00ff; }
+
+@keyframes floatMath {
+    0% { transform: translateY(100vh); opacity:0; }
+    50% { opacity:1; }
+    100% { transform: translateY(-10vh); opacity:0; }
+}
+
+/* 🧑 PROFILE BUTTON */
+.profile-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: url('https://i.pravatar.cc/100') center/cover;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+/* 📦 PROFILE CARD */
+.profile-card {
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    width: 250px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    display: none;
+}
+
+.profile-card img {
+    width: 70px;
+    border-radius: 50%;
+}
+
+.profile-card h3 {
+    margin-top: 10px;
+}
+
+.profile-card p {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* 🎯 CENTER BOX */
+.center-box {
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    filter: blur(60px);
-}
-
-/*  MATH SYMBOLS */
-.math-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.math-bg span {
-    position: absolute;
-    font-weight: bold;
-    color: rgba(255,255,255,0.25);
-    animation: floatMath 14s linear infinite;
-}
-
-.math-bg span:nth-child(1) { font-size: 22px; }
-.math-bg span:nth-child(2) { font-size: 18px; }
-.math-bg span:nth-child(3) { font-size: 24px; }
-.math-bg span:nth-child(4) { font-size: 20px; }
-.math-bg span:nth-child(5) { font-size: 26px; }
-
-@keyframes floatMath {
-    0% { transform: translateY(100vh) translateX(0); opacity:0; }
-    25% { opacity:0.25; transform: translateY(70vh) translateX(10px);}
-    50% { transform: translateY(40vh) translateX(-10px);}
-    75% { transform: translateY(10vh) translateX(15px);}
-    100% { transform: translateY(-10vh) translateX(-15px); opacity:0;}
-}
-
-/*  LOGIN BOX */
-@keyframes floatBox {
-    0%,100% { transform: translateY(0) rotateX(4deg);}
-    50% { transform: translateY(-10px) rotateX(4deg);}
-}
-
-/*  PULSE GLOW */
-@keyframes pulseGlow {
-    0%,100% {
-        box-shadow:
-            0 0 20px #6f75ac,
-            0 0 40px #746e87,
-            0 0 80px rgba(104, 103, 120, 0.6);
-    }
-    50% {
-        box-shadow:
-            0 0 30px #9aa9df,
-            0 0 60px #7585ad,
-            0 0 120px rgba(72, 95, 148, 0.9);
-    }
-}
-
-.login-box {
-    width: 330px;
-    padding: 30px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.2);
-
-    box-shadow:
-        0 0 20px #314774,
-        0 0 40px #f989b7,
-        0 0 80px rgba(42, 75, 97, 0.6);
-
     text-align: center;
-    color: rgb(155, 236, 126);
-    transform: perspective(1000px) rotateX(4deg);
-    animation: floatBox 5s ease-in-out infinite, pulseGlow 3s infinite;
-    transition: 0.4s;
     position: relative;
     overflow: hidden;
-    z-index: 2;
 }
 
-.login-box:hover {
-    transform: perspective(1000px) rotateX(0deg) scale(1.05);
-}
-
-/*  DOUBLE SHINE */
-.login-box::before {
+/* ✨ DOUBLE SHINE */
+.center-box::before {
     content: "";
     position: absolute;
     width: 200%;
     height: 60%;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.162), transparent);
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
     transform: rotate(25deg);
     top: -120%;
     left: -50%;
-    animation: shine1 4s infinite;
+    animation: shine1 5s infinite;
+}
+
+.center-box::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 60%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+    transform: rotate(-25deg);
+    bottom: -120%;
+    left: -50%;
+    animation: shine2 6s infinite;
 }
 
 @keyframes shine1 {
@@ -140,84 +122,41 @@ body::after {
     100% { top: 200%; }
 }
 
-.login-box::after {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 50%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-    transform: rotate(-25deg);
-    bottom: -120%;
-    left: -50%;
-    animation: shine2 5s infinite;
-}
-
 @keyframes shine2 {
     0% { bottom: -120%; }
     100% { bottom: 200%; }
 }
 
-/* ✨ TITLE */
-.login-box h2 {
+/* TITLE */
+.center-box h1 {
     margin-bottom: 20px;
 }
 
-.login-box h2 div {
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-/* 🧾 INPUT */
-.input-box {
-    margin: 12px 0;
-    text-align: left;
-}
-
-.input-box label {
-    font-size: 12px;
-    opacity: 0.8;
-}
-
-.input-box input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
+/* INPUT */
+.center-box input {
+    width: 300px;
+    padding: 12px;
+    border-radius: 25px;
     border: none;
     outline: none;
-    margin-top: 5px;
-    background: rgba(255,255,255,0.2);
-    color: white;
 }
 
-/*  BUTTON */
-.login-btn {
+/* 🔘 BUTTON */
+.center-box button {
     position: relative;
     overflow: hidden;
-    width: 100%;
-    padding: 10px;
     margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 20px;
     border: none;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #ff4d6d, #ff7eb3, #4facfe);
-    background-size: 200%;
+    background: linear-gradient(90deg,#ff4d6d,#4facfe);
     color: white;
-    font-weight: bold;
     cursor: pointer;
-    transition: 0.4s;
-
-    box-shadow:
-        0 0 10px #ff4d6d,
-        0 0 20px #ff7eb3,
-        0 0 30px rgba(255,0,100,0.6);
+    transition: 0.3s;
 }
 
-.login-btn:hover {
-    background-position: right;
-    transform: scale(1.08);
-}
-
-/*  BUTTON FLASH */
-.login-btn::after {
+/* ⚡ FLASH */
+.center-box button::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -229,63 +168,19 @@ body::after {
     transition: 0.3s;
 }
 
-.login-btn:hover::after {
-    opacity: 0.3;
+.center-box button:hover::after {
+    opacity: 0.4;
 }
 
-/* 🔗 EXTRA */
-.extra {
-    margin-top: 12px;
-    font-size: 12px;
-}
-
-.extra a {
-    color: #eee;
-    text-decoration: none;
-}
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-box {
-    background: linear-gradient(135deg, #ff4d6d, #4facfe);
-    padding: 25px;
-    border-radius: 15px;
-    color: white;
-    text-align: center;
-    box-shadow: 0 0 20px #ff4d6d;
-    animation: pop 0.3s ease;
-}
-
-.popup-box button {
-    margin-top: 15px;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 8px;
-    background: white;
-    color: black;
-    cursor: pointer;
-}
-
-@keyframes pop {
-    from { transform: scale(0.5); }
-    to { transform: scale(1); }
+.center-box button:hover {
+    transform: scale(1.08);
 }
 </style>
-
 </head>
 
 <body>
 
-<!--  SYMBOLS -->
+<!-- 🔢 SYMBOLS -->
 <div class="math-bg">
     <span style="left:10%;">+</span>
     <span style="left:30%;">×</span>
@@ -294,64 +189,27 @@ body::after {
     <span style="left:90%;">∞</span>
 </div>
 
-<!-- LOGIN -->
-<div class="login-box">
+<!-- 🧑 PROFILE -->
+<div class="profile-btn" onclick="toggleProfile()"></div>
 
-    <h2>
-        Welcome !!!
-        <div>அன்புடன் வரவேற்கிறோம் !!!</div>
-    </h2>
-
-    <div class="input-box">
-        <label>Username / பயனர் பெயர்@@@</label>
-        <input type="text" placeholder="Enter your username">
-    </div>
-
-    <div class="input-box">
-        <label>Password / கடவுச்சொல் ****</label>
-        <input type="password" placeholder="Enter your password">
-    </div>
-
-    <button class="login-btn" onclick="loginUser()">
-        Login / உள்நுழை >>>
-    </button>
-
-    <div class="extra">
-        <a href="#">
-            ^^^ Forgot Password?<br>
-            கடவுச்சொல் மறந்துவிட்டீர்களா? ^^^
-        </a>
-    </div>
-
+<div class="profile-card" id="profileCard">
+    <img src="https://i.pravatar.cc/100">
+    <h3>Annal</h3>
+    <p>annalmdj2309@gmail.com</p>
 </div>
-<div id="popup" class="popup">
-    <div class="popup-box">
-        <p id="popup-text">Login Success!</p>
-        <button onclick="closePopup()">OK</button>
-    </div>
+
+<!-- 🎯 CENTER -->
+<div class="center-box">
+    <h1>Welcome to MAT_TAB 🎉</h1>
+    <input type="text" placeholder="Enter your question...">
+    <br>
+    <button>Search</button>
 </div>
-<script>
-function loginUser() {
-    let username = document.querySelector('input[type="text"]').value;
-    let password = document.querySelector('input[type="password"]').value;
 
-    if(username === "admin" && password === "1234") {
-        showPopup("Login Success!");
-        window.location.href = "dashboard.html";
-    } else {
-        showPopup("Invalid Username or Password");
-    }
-}
-</script>
 <script>
-function showPopup(message) {
-    document.getElementById("popup-text").innerText = message;
-    document.getElementById("popup").style.display = "flex";
-}
-
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-    window.location.href = "dashboard.html";
+function toggleProfile() {
+    let card = document.getElementById("profileCard");
+    card.style.display = card.style.display === "block" ? "none" : "block";
 }
 </script>
 
